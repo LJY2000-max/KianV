@@ -1,0 +1,13 @@
+mtime:
+    implemented: false
+reset:
+    label: reset_vector
+nmi:
+    address: 0x0
+
+#memory:        
+#    regions:
+#        - access: "rwx"
+#          base: 0x0
+#          size: 0x10000
+#          addrbits: 32

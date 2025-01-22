@@ -1,0 +1,27 @@
+hart_ids: [0]
+hart0:    
+    ISA: RV32IMC  # KianV 支援的基本 ISA 特性
+    physical_addr_sz: 32  # 物理地址大小為 32 位
+    supported_xlen: [32]  # 支援的 XLEN 值（僅支援 32 位）
+    misa:  # 機器 ISA 寄存器配置
+        reset-val: 0x40001104  # 重置值，表示支援 RV32IMC
+        rv32:  # RV32 配置
+            accessible: true
+            mxl:  # 機器 XLEN
+                implemented: true
+                type:
+                    warl:
+                        dependency_fields: []
+                        legal:
+                            - mxl[1:0] in [0x1]  # 1 表示 RV32
+                        wr_illegal:
+                            - Unchanged
+            extensions:  # ISA 擴展位
+                implemented: true
+                type:
+                    warl:
+                        dependency_fields: []
+                        legal:
+                            - extensions[25:0] bitmask [0x0001104, 0x0000000]  # IMC 擴展
+                        wr_illegal:
+                            - Unchanged
